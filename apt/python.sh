@@ -21,7 +21,7 @@ pip3 --version
 
 echo 'alias python=python3' >> ~/.bashrc
 echo 'alias pip=pip3' >> ~/.bashrc
-
+sudo ln -s /usr/bin/python3 /usr/bin/python
 python --version
 pip --version
 
