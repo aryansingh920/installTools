@@ -19,4 +19,10 @@ source ~/.bashrc
 python3 --version
 pip3 --version
 
+echo 'alias python=python3' >> ~/.bashrc
+echo 'alias pip=pip3' >> ~/.bashrc
+
+python --version
+pip --version
+
 echo "Python and Pip installed and added to .bashrc."
