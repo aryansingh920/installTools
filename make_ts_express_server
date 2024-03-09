@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Create the directory structure
+mkdir -p src/router src/middleware src/controller
+
+
+npm init -y
+npm i express @types/express typescript axios cors helmet
+
+git init
+
+# Create the run.sh file
+echo '#!/bin/bash
+tsc && node src/server.js' > run.sh
+chmod +x run.sh
+
+# Create the TypeScript files
+echo 'import express from "express";
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.send("Hello, world!");
+});
+
+export default router;' > src/router/router.ts
+
+echo '// Add your middleware here' > src/middleware/index.ts
+
+echo 'import express from "express";
+import router from "../router/router";
+
+const app = express();
+const port = 3000;
+
+app.use("/", router);
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});' > src/server.ts
+
+echo 'import express from "express";
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.send("Welcome to the home page!");
+});
+
+export default router;' > src/controller/home.ts
